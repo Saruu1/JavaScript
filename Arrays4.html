@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // Arrays are the collection of elements/items;
+        //AN ARRAY IS DEFINED AS FOLLOWS: 
+        let students = ["S1", "S2", "S3", "S4"];
+        console.log(students);
+        console.log("The length of the array is ", students.length);// .length is a property not a method
+        // array itself is a typeof object
+
+        // ARRAY INDICES:
+        // we can access the indices of an array like this:
+        let index0 = students[0];
+        console.log(index0);
+
+        // Arrays are MUTABLE i.e we can change the value of an array at a particular index as follows:
+        students[1] = 65; // it would replace the value to 65 at index 1;
+        students[3] = 43;
+  
+        // LOOPING OVER AN ARRAY: using loops on arrays
+
+        //printing all the elements of the following array, we can use loops as:
+        //USING FOR LOOP
+        let villans = ["V1","V2","V3","V4","V5"];
+        for(i=0;i<villans.length;i++){
+            console.log(villans[i]);
+        }
+
+        //USING FOR-OF LOOP
+        for (let villan of villans) {
+            console.log(villan)
+        }
+
+        //PRACTICE QUESTION 1
+        // Finding average marks :
+        let arr = [85, 97, 44, 37, 76, 60]
+        let sum = 0;
+        for(i=0;i<arr.length;i++){
+            sum += arr[i]; 
+        }
+        let average = sum/arr.length;
+        console.log(`Average marks are ${average}`)
+
+        //PRACTICE QUESTION 2
+        // Applying 10% offer on each element and stores in the same array
+        let items = [250, 645, 300, 900, 50]
+        let offer = 0;
+        for (i =0; i<items.length;i++){
+            console.log(items[i])
+            items[i] -= items[i]/10
+            console.log(`The price after offer is ${items[i]}`)
+        }
+
+        // ARRAY METHODS (method is a function which does certain work for us)
+
+        // 1. .push() : pushes an element at the end of an array
+        let colours = ["red", "green", "pink", "blue", "yellow"];
+        console.log(colours);
+        colours.push("green","lavender")// we can add multiple items also by separating them with a comma
+        console.log("Pushed array is", colours);
+        // //2. .pop() : it deletes the an element from end and return it
+        colours.pop()
+        console.log("Popped array is", colours)
+        //3. .toString() : it converts the array to the string
+        console.log(colours.toString());
+        //4. .concat() : it joins two or more arrays and returns result
+        let blackAnimals = ["bear","wolf", "cat"];
+        let whiteAnimals = ["rabbit","horse"];
+        let strippedAnimals = ["zebra"];
+        let animals = blackAnimals.concat(whiteAnimals, strippedAnimals);
+        console.log(animals);
+        //5. .unshift(): it adds the element at the start of an array (similar to push());
+         blackAnimals.unshift("dog")
+        console.log(blackAnimals);
+        //6. .shift(): it deletes the starting element and returns it (similar to pop())
+        let deletedVal = whiteAnimals.shift();
+        console.log("del", deletedVal )
+        console.log(whiteAnimals);
+        //7. .slice(): it returns the piece of an array (doesnt change the original array)
+         let slicedArr = blackAnimals.slice(0,2) // end index is non inclusive
+        console.log(slicedArr)
+        //8. .splice(): it changes the original array (add, remove, replace)
+        // splice(startIdx, delCount, newEll), it takes three arguments, starting index, no of items to be deleted and new element to be added
+        let numbers = [1,3,5,7,9];  
+        numbers.splice(1,2,9,9); // it replaced elements from index 1, deleted 2 elements from index 1, and repleced those 2 elements by 9 and 9;
+        console.log(numbers);
+        // add an element
+         numbers.splice(2,0,66); // it deletes zero element but adds 66 at index 2;
+        // delete an element
+         numbers.splice(2,1);// it deletes one element at index 2
+        // replace an element
+         numbers.splice(3,1,10);// it replaces one element at index 3 by 10;
+
+        //PRACTICE QUESTION 3
+        let companies = ["Bloomberg", "Microsoft", "Uber", "Google", "IBM", "Netflix" ];
+        companies.shift();// it deletes the first element;
+        companies.splice(1,1,"Ola");// it replaces the element at index 1 by "Ola";
+        companies.push("Amazon")// it adds "amazon" at the end of array;
+        console.log(companies);
+    </script>  
+</body>
+</html>

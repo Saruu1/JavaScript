@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events in Js</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <button id="mode">Dark/Light Mode</button>
+    <!-- <button id ="btn1">Button1</button>
+    <button id="btn2">Button2</button>  
+    <div ></div>This is a box</div>  -->
+    <script>
+        // EVENTS : 
+        // The change in the state of an object is known as an event;
+        // Events are fired to notify code of "interesting changes" that may affect code execution;
+        /* Types of events:
+        1. Mouse Events (click, double click etc)
+        2. Keyboard Events (keypress, keyup, keydown)
+        3. Form Events (submit etc)
+        4. Print Event and many more */
+
+        // EVENT HANDLING INSIDE JS:
+        // Priority - JS handing > Inline handling
+        /* node.event = () =>{
+            //handle here
+        }*/
+        let btn1 = document.querySelector("#btn1");
+        btn1.onclick = () =>{
+            console.log("Button1 was clicked")
+        }
+        let btn2 = document.querySelector("#btn2");
+        btn2.ondblclick = () =>{
+            console.log("Button1 was clicked 2 times")
+        }
+        let  div = document.querySelector("div")
+        div.onmouseover = () =>{
+            console.log("This is box")
+        }
+
+        // EVENT OBJECT:
+        /* It is a special object that has details about the event;
+        All event handlers have access to the event objects properties and methods 
+        - node.event = (e) =>{
+            //code here
+        }
+        - types: e.target, e.type, e.cientX, e.clientY, e.target.value
+        */
+        let btn1 = document.querySelector("#btn1");
+        btn1.onclick = (e) =>{
+            console.log(e.target) //  target is button
+            console.log(e.type) // type is click
+            console.log(e.clientX,e.clientY) // X and Y coordinates 
+            
+        }
+
+        // EVENT LISTENERS : efficient way to listen to events
+        // node.addEventListener(event, callback) - to add the event
+        // node.removeEventListener(event, callback) - to remove the event
+        // Note - the callback reference should be same to remove
+        // To to the above work through event listeners we have :
+        btn1.addEventListener("click", ()=>{ // adding event
+            console.log("Button1 was clicked - Hander1")
+        })
+        btn1.addEventListener("click", ()=>{ 
+            console.log("Button1 was clicked - Hander2")
+        })
+        const handler3 = ()=>{ 
+            console.log("Button1 was clicked - Hander3")
+        }
+        btn1.addEventListener("click", handler3)
+        btn1.addEventListener("click", ()=>{ 
+            console.log("Button1 was clicked - Hander4")
+        })
+
+         btn1.removeEventListener("click",  handler3) //removed handler3 but we first had to store that to a variablr;
+        
+        //PRACTICE QUESTION 1: 
+        // Create a toggle button which changes the screen to darkmode when clicked and light mode when clicked again;
+          let mode = document.querySelector("#mode");
+          let currMode = "light";  
+          mode.addEventListener("click", ()=>{
+            if(currMode==="light"){
+                currMode = "dark"
+                document.body.style.backgroundColor = "black"
+            }
+            else{
+                currMode="light"
+                document.body.style.backgroundColor = "white"
+            }
+            console.log(currMode)
+          }) 
+
+    </script>
+</body>
+</html>

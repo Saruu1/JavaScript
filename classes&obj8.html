@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Classes and Objects</title>
+</head>
+<body>
+    <script>
+        // CLASSES AND OBJECTS
+        /* -> An object is an entity having state and behaviour (properties and method)
+         ->JS object has a special property of prototype (reference to an object)
+         -> We can set prototype using __proto__ 
+         -> If object and prototype have the same method, then the objects own method is used*/
+         // Object example
+         const student = {
+         Name : "Guddu Pandith",
+         Age : 43,
+           printAge (){
+         console.log("age is ", this.Age)
+         }  
+        }
+        const teacher = {
+            salary : 56000,
+            printAge (){
+            console.log("age is 60")
+         }  
+        }
+        teacher.__proto__ = student; // setting prototype of student to taecher;
+
+        // CLASSES IN JS
+        /* -> Class is a program-code template for creating objects
+           -> Those functions will have some state(variables) and behaviour(functions) inside it
+           example:
+           class myClass {
+            constructor(){...}
+            myMethod(){...}
+           }
+           let myObj = new myClass() - creating an object through classes*/
+           //example:
+           class ToyotaCar {
+            constructor(brand, millege){
+                this.brand = brand;
+                this.millege = millege;
+
+            }
+                start(){
+                console.log("start");
+            }
+                stop(){
+                console.log("stop");
+            }
+            setBrand(brand){
+            this.brand = brand;
+            }
+           }
+           let fortuner = new ToyotaCar("Snow Leapord", 12);
+           let camre = new ToyotaCar("King Kick", 13);
+
+
+           // CONSTRUCTOR IN JS
+           /* Constructor() method is automatically invoked by new, it initilizes object
+           -> Constructor function runs for all the objects made from the same class */
+
+           // INHERITANCE IN JS
+           /*->Inheritance is passing down properties and methods from parent class to child class
+           example:
+           class Parent(){...}
+           class Child extends Parent{
+           }
+           -> if parent and child have same method, then childs method will be used[Method Overriding]
+           */
+           //example1:
+           class Parent{
+            hello(){
+                console.log("this is hello")
+            }
+           }
+           class Child extends Parent{};
+           let obj = new Child(); // hence we can use any method from parent class;
+
+           //example2:
+           class person {
+            constructor(){
+                this.species = "homo sapiens";
+            }
+            eat(){
+                console.log("I eat")
+            }
+            sleep(){
+                console.log("I sleep")
+            }
+            work(){
+                console.log("I dont work")
+            }
+           }
+           class engineer extends person{
+           work(){
+            console.log("I make projects")
+           }
+           }
+           let Rasik = new engineer();
+
+           //SUPER KEYWORD IN JS
+           // It is used to call the constructor of its parent class to access the parents properties and methods
+           // super(args) - class parents constructor
+           // super.parentMethod(args)
+           class person1 {
+            constructor(name){
+                this.name = name;
+            }
+            eat(){
+                console.log("I eat")
+            }
+        }
+        class engineer1 extends person1{
+            constructor(name){
+                super(name) // to invoke parent class constructor
+            }
+           work(){
+            super.eat();
+            console.log("I make projects")
+           }
+        }
+        let engg = new engineer1("Kartik");
+
+        // PRACTICE QUESTION 1:
+        /* You are creating a website for your college. Create a class User with two properties, name and email.
+           It also has a method viewData() which alows the user to view website data */
+        let DATA = "SecretData"
+        class User {
+            constructor(name, email){
+             this.name = name;
+             this.email = email;
+            }
+            viewData(){
+            console.log(DATA)
+            }
+        }
+        let student1 = new User("Bassi", "bassi@gmail.com")
+        let student2 = new User("Luke", "luke@gmail.com")
+        let teacher1 = new User("Head", "head@gmail.com")
+
+        //PRACTICE QUESTION 2:
+        /*Create a new classs Admin which inherits from user. Add a new method called editData
+        to admin that alows it to edit website data*/
+        class Admin extends User {
+            constructor(name, email){
+                super(name, email)
+            }
+            editData(){
+                DATA = "some new data"
+            }
+        }
+        let admin = new Admin("admin", "admin@gmail.com")
+
+        // ERROR HANDLING:
+        /* try-catch - we put the code in try block which we suspect for the error and catch block shows us the type of error
+        try {
+            {...normal code}
+        } catch(err){ // err is error object
+        ...handling error
+        }
+        */
+    </script>
+</body>
+</html>

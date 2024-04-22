@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document Object Model</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <p class="myClass">I am a paragraph</p>
+    <!-- <h2>Hello JavaScript!</h2> // Practice Q1 -->
+    <!-- <div class="box">First Div</div>  // Practice Q2 
+    <div class="box">Second Div</div>
+    <div class="box">Third Div</div> -->
+    <!-- <h1 style ="visibility: hidden" id = "first">Welcome</h1>
+    <h2 id = "first">Honey Bro</h2>
+    <h3 class = "myclass">Good to see you</h3>
+    <h4 class = "myclass">Hope you are good</h4>
+    <p>Please follow the instructions</p>
+    <p>and have descipline</p> -->
+    <script>
+        /*
+        -> null means empty object.
+         WINDOW OBJECT :- It represents an open window in a browser. It's beowsers object (not javascript's) 
+         and is created by the browser automatically. Its a global object with a lots of properties and methods. */
+        //  console.log(window); // it shows all the functions inside window object;
+         //most of the functions we use in javascript are parts of window object;
+
+         /* DOM: when a web page is loaded, browser creates a Document Object Model (DOM) of the page.
+         -> Basically all html code in a web page can be accessed inside javascript. It can be accessed
+         because all the html code gets inside javascript gets coverted into an object called as Document object; 
+        And this document is present inside Window object;
+        -> console.dir(document) : it is used to print properties and methods of a special objects;*/
+
+        // DOM MANIPULATION : Making changes inside DOM
+
+        //1. Selecting with Id : document.getElementsById("myId"), selects an element with id = myId;
+         document.getElementById("first").style.color = "blue"; // id is always unique;
+
+        //2. Selecting with class : document.getElementsByClass("myClass");
+         let classes = document.getElementsByClassName("myclass")// className can be same of two or more elements;
+         console.log(classes);
+
+        //3. Selecting with tag : document.getElementsByTag("p");
+        let parahs = document.getElementsByTagName("p");
+        console.log(parahs);
+
+        // QUERY SELECTOR :
+        // For tags
+         let firstEl = document.querySelector("p"); // selects the first matching element
+         console.log(firstEl);
+         let allEl = document.querySelectorAll("p"); // selects all matching elements
+         console.log(allEl);
+
+        // For classes
+         let firstCl = document.querySelector(".myclass"); // we use a dot (.) before className;
+         console.log(firstCl);
+         let allCl = document.querySelectorAll(".myclass"); // selects all matching elements
+         console.log(allCl);
+
+        // For Id's
+        let firstId = document.querySelector("#first"); // we use a hash symbol (#) before an idName;
+         console.log(firstId);
+         let allId = document.querySelectorAll("#first"); // selects all matching elements
+         console.log(allId);
+        
+         /* There are three type of nodes in a DOM:
+         1. Text Nodes
+         2. Comments
+         3. Elements
+         */
+
+        // PROPERTIES -> get, set, update;
+        // 1. tagName: it returns tag for element nodes (h1,h2,h3,p...)
+        let tagName = firstId.tagName
+        console.log(tagName); //h1
+        // 2. innerText : returns the text content of the element and its chidren;
+        let innerText = firstId.innerText;
+        console.dir(innerText);
+         // firstId.innerText = "Add this text" - we can change the content this way
+        //  3..innerText : returns the plain text or HTML contents/tags in the element;
+        let.innerText = firstId.innerText;
+        console.dir.innerText;
+        // firstId.innerText = "Add this text and htlml" - we can change the content this way
+        //   4. textContent : returns textual content even for hidden elements;
+        let content = firstId.textContent;
+        console.log(content); // it shows the content even though the content is hidden;
+
+        // PRACTICE QUESTION 1:
+        // Create an h2 element with text "Hello JS!". Append "from abc university" to this text using JS;
+         let h2 = document.querySelector("h2");
+         console.dir(h2.innerText)
+         h2.innerText = h2.innerText + " from abc university";
+         console.dir(h2.innerText);
+
+        //PRACTICE QUESTION 2
+        // Create 3 div's with class Name = "box". Access them and add some unique text to each of them;
+        let divisions = document.querySelectorAll(".box");
+        divisions[0].innerText = "Welcome to div 1";
+        divisions[1].innerText = "Welcome to div 2";
+        divisions[2].innerText = "Welcome to div 3";
+
+        //ATTRIBUTES : (id, class, name)
+        //1. getAttribute("attr") - to get the attribute value;
+        let val = document.querySelector("div");
+        console.log(val.getAttribute("class"));
+        //2. setAttributr("attr", "value") - to set the attribute value;
+          let val1 = document.querySelector("div");
+          console.log(val1.setAttribute("class", "bigClass"));
+
+        //STYLE : we cam change style also;
+        // mode.style - to access;
+        // manipulating the first div
+        let div = document.querySelector("div");
+        div.style.backgroundColor = "green";
+        div.style.color = "white";
+        div.innerHTML = "<i>First Div</i>" // change HTML
+        div.innerText = "New Text" // change text
+        div.style.visibility = "hidden" // to hide the element
+         
+        // INSERT ELEMENTS:
+        // Before inserting elements we need to create them as :
+           let newBtn = document.createElement("button");
+           newBtn.innerText = "Click Me"; 
+        //1. node.append(el) - adds at the end of node (inside)
+         let div = document.querySelector("div");
+        div.append(newBtn); // adds the button indise the div but at the end;
+        //2. node.prepend(el) - adds at the start of node (inside)
+        //3. node.before(el) - adds before the node (outside)
+        //4. node.after(el) - adds after the node (outside)
+
+        //DELETE ELEMENTS:
+        //1. node.remove() - removes the node;
+        let btn = document.querySelector("button")
+        btn.remove(); // it removes the button;
+
+        //PRACTICE QUESTION 3:
+        // Create a new button element. Give it a text, bg colour red and text colour white. Insert this button as the first element inside body tag;
+        let pBtn = document.createElement("button");
+        pBtn.innerText = "Click Me";
+        pBtn.style.backgroundColor = "red";
+        pBtn.style.color = "white";
+        let body = document.querySelector("body").prepend(pBtn)
+
+        //PRACTICE QUESTION 4:
+        /* Create a <p> tag in html, give it a class and some styling.
+            Now create a new class in css and try to append this class to the <p>
+            Did you notice how you overwrite the classname when you add a new one?
+            Solve this prblem using classList */
+
+            let para = document.querySelector("p");
+             para.setAttribute("class", "newClass") // but this overrides the initial text but want it present;
+             para.classList.add("newClass") // we use classList instead nt to override it and make present both the classes
+              // we can remove it similarly by using classList.remove;
+
+     </script> 
+</body>
+</html>

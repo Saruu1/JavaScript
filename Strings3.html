@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        // STRINGS IN JS
+
+        let str = "ilovemyhome";
+        length = str.length;
+        index = str[3]
+        console.log("The length of the string is ", length)
+        console.log("The index is ", index)
+
+        // OBJECT EXAMPLE
+        let obj = {
+            name: "pen",
+            cost: 10
+        }
+        console.log("The price of ", obj.name, "is", obj.cost, "rupees") // to print it normally
+        console.log(`The price of ${obj.name} is ${obj.cost} rupees`) // printing it inside template literals, we use ${} sign to access the object;
+
+        // TEMPLATE LITERALS
+
+        // Inside template literals we can write variables with strings;
+
+        let str1 = `heIsaGoodAnimal`; // backticks are used here
+        console.log(str1);
+
+        // STRING METHODS
+
+       // 1. .upperCase() 
+        let upC = str1.toUpperCase()
+        console.log(upC)
+
+        // 2. .lowerCase()
+        let lowC = str1.toLowerCase()
+        console.log(lowC)
+
+        // 3. .trim() : it removes all the whitespaces in the beginning and the end
+        let stR = "   he is my best friend   "
+        console.log(stR.trim());
+
+        // 4. .slice(): it returns part of a string
+        let string = "1234567";
+        let slicedStr = string.slice(2,5); // ending index is non exclusive
+        console.log(slicedStr);
+
+        //5. .concat() : it joins two strings
+        let str2 = "i am bunny and ";
+        let str3 = "i live on mars";
+        let concattedStr = str2.concat(str3);
+        let concattedStr1 = str2 + str3;
+        console.log(concattedStr1); // another way of concatting
+
+        //6. .replace() : it replaces the fist match/value of a string;
+        let colour = "Green";
+        console.log(colour.replace("n","t"));   // first value is what is replaced and second is by what its replaced
+        console.log(colour.replace("en","at"));
+        console.log(colour.replaceAll("ee", "aa")) //to replace all the matches
+
+        //7. .charAt() : it gives us the character in a srting of a particular index
+        let example = "imissschool";
+        console.log(example.charAt(7)); //h
+        
+        // Strings are immutable i.e we cant change a charater of a string at a particular index directly, we need to use the slice() for that
+        //PRACTICE QUESTION
+        // asking a user to enter their full name and changing that full name into a username with the lenth of it as a suffix.
+        let fullName = prompt("Enter your full name without spaces")
+        console.log("@" + fullName + fullName.length );
+
+    </script>
+    </body>
+    </html>

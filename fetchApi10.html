@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fetch Api</title>
+</head>
+<body>
+  <button id="btn">Get a fact</button>
+  <p class="para"> </p>
+    <script>
+      let button = document.querySelector("#btn");
+      let paraG = document.querySelector(".para");
+      
+        // fetch API:
+        /*-> The fetch API provides interface for fetching(sending/recieving) resources
+          -> It uses request and response objects
+          -> The fetch method is used to fetch the resourse(data)
+          -> let promise = fetch(URL, [options])*/
+          const URL = "https://cat-fact.herokuapp.com/facts"
+          const getFacts =  async () => {
+            console.log("getting data....")
+            let response =  await fetch(URL);
+             let data = await response.json();
+             paraG.innerText = data[2].text;
+            console.log(data[0].text) // JSON format
+          }
+          
+          button.addEventListener("click", getFacts )
+         
+         
+           /* The response we get in the console is not understandable because its in the 
+              different format, so to understand that format we need to understand some terms*/
+              
+          // UNDERSTANDING TERMS:
+          /*-> AJAX : it is asynchronous JS and XML
+            -> JSON : it is JavaScript Object Notation
+            -> json() method : returns the second promise that resolves with the result of parsing
+            the response body text as JSON (input is JSON and output is JS object) 
+           
+            // REQUESTS AND RESPONSE:
+            -> HTTP verbs
+            -> Response status (200 - request is okay, 400 - client side error, 500 - server side error )
+            -> HTTP response headers also contain the detail about responses, such as content type, HTTP status code etc;
+            */ 
+
+    </script>
+</body>
+</html>

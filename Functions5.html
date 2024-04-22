@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Functions in JS</title>
+</head>
+<body>
+    <script>
+        // Function is a block of code used to perform some  specific task. A function can be invoked whenever needed;
+
+        function firstFunction (){
+            console.log(`This is my first function :)`);   // function declaration/definition
+        }
+        firstFunction(); // function call | (we can call the function multiple times to make the function execute various times)
+        
+        // ANOTHER CONCEPT;
+        
+        function secFunction(text, num){ // parameter -> input
+            console.log(text, num);
+        }
+        secFunction("Hey! You doing goood?", 88);// passing the value here is called argument. we can pass multiple arguments;
+
+        //PRACTICE QUESTION 1
+        // function to add two numbers
+        function add (num1, num2){ // these two parameters are local variables(they have the block scope| they exist only inside this block)
+        num3 = num1+num2;
+        return num3; // it returns the value to the function call
+           // code after return is not executed;
+        }
+        let num4 = add(4,5);
+        console.log(num4);
+
+        // ARROW FUNCTIONS : Its a compact way of writing a function;
+        //sum of two numbers using arrow function
+        let arrFunction = (a,b) =>{ // here arrFunction is a variable which stores a function
+            return a+b;
+        };
+        let sum = arrFunction(3,8);
+        console.log(sum);
+
+        //PRACTICE QUESTION 2
+        // Creating a function using a "function" keyword that takes the string as an argument and returns the no of vowels in it; 
+        function countVowels(str){
+             let count = 0;
+            for (const val of str){
+                if(val === "a" || val === "e" || val === "i"|| val === "o" || val === "u"){
+                    count++;
+                }
+            }
+            return count;
+        }
+        let result = countVowels("tommyisagooddog");
+        console.log("No of vowels are ", result);
+
+        // DOING SAME QUESTION USING ARROW FUNCTIONS
+        const countVowels1 = (str) => {
+            let count = 0;
+            for(const val of str){
+                if(val === "a" || val === "e" || val === "i"|| val === "o" || val === "u"){
+                   count++;
+            }
+        }
+        return count;
+    }
+       let result1 =  countVowels("heyguyswelcome");
+       console.log("The no of vowels using arrow function is ", result1)
+
+    // FOREACH LOOP IN ARRAYS
+    /* arr.forEach(callBackFunction)
+    callBackFunction: Here, its a function to execute for each element in an array;
+    -> A callback function is a function passed as an argument in the another function */
+    // Example
+    let birds = ["Crow", "Pigeon", "Hen", "Bulbul"];
+    birds.forEach((val, indx, birds)=>{ // val here is passed by forEach function to internal function and it represents val ar each index of the array;
+        console.log(val, indx, birds); // There are 3 parameters which can be used inside callBackFuncton i.e val, index, array;
+    })
+
+    /* HIGHER ORDER FUNCTIONS/METHODS : They are the functions which either take another
+     function as a parameter inside them or return the function as their output */
+
+
+     // PRACTICE QUESTION 3:
+     //Print the square of each value of an array using forEach loop;
+     let numbers = [2,4,5,6,7,8,9];
+     numbers.forEach((val)=>{
+        console.log("Squared value of ", val, "is", val*val ) 
+     })
+
+    // MORE ARRAY METHODS;
+    //1. .map(): it creates a new array with the results of some operation.The value its callback returns are used to form a new array;
+    //  Example: it creates a new array;
+    let nums = [1,2,3,5,6,7];
+    let newArr = nums.map((num)=>{
+     return num**2;
+    }) 
+    console.log(newArr);
+
+    //2. .filter(): it creates a new array of elements that give true for a condition;
+    //Example:
+    let arR = [2,3,4,5,6,7,8,9];
+    let evenArr = arR.filter((val)=>{
+        return val%2===0;
+    })
+    console.log(evenArr);
+
+    //3. .reduce(): it performs some operations and reduces the array into a single value, it returns that single value;
+    // let arr1 = [1,2,3,4,5];
+     const output = arr1.reduce((prev, curr)=>{
+      return prev + curr; /* initially prev holds the first element and curr holds the second element 
+      of the array and then they get added and the result is stored in prev again and now the curr 
+      holds the next value (3) and at the end all of it gets stored in output*/ 
+    })
+    console.log(output);
+
+    // PRACTICE QUESTION 4;
+    // return the largest number in an array
+    let numbs = [71,34,56,33,70,0];
+    const bigNo = numbs.reduce((prev, curr)=>{
+        return prev > curr ? prev : curr;
+    })
+    console.log(bigNo);
+
+    // PRACTICE QUESTION 5;
+    // filter out students who has scored 90+ marks;
+    let marks = [56,98,78,87,95,91,56,94];
+     const highMarks = marks.filter((val)=>{
+        return val > 90;
+    })
+    console.log("More than 90 marks are", highMarks);
+
+    //PRACTICE QUESTION 6;
+    /* Take a number (n) from a user and create an array from 1 to n */
+     let n = prompt("Enter a number");
+     let arr = [];
+     for(i=1;i<=n;i++){
+        arr[i-1]= i;
+     }
+     console.log(arr);
+      let arrSum = arr.reduce((prev,curr)=>{
+        return prev + curr;
+     })
+     console.log("Sum of the array is ",arrSum);
+     let factorial = arr.reduce((prev,curr)=>{
+        return prev * curr;
+     })
+     console.log("Product of the array is ",factorial)
+    </script>
+</body>
+</html>
